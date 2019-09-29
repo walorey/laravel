@@ -4,6 +4,6 @@
 	<title>Holi</title>
 </head>
 <body>
-<h2>Holas <?php echo $nombre ?></h2>
+<h2>Hols <?php echo $nombre ?></h2>
 </body>
 </html>
