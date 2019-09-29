@@ -1,7 +1,9 @@
-@section('title', 'home')
+@section('title')
+	About
+@endsection
 
 @extends('layout')
 
 @section('contenido')
-	<h1>Home</h1>
+	<h1>About</h1>
 @endsection
