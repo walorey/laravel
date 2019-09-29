@@ -19,6 +19,8 @@ class PortafolioController extends Controller
             ['title' => 'Proyecto 3'],
             ['title' => 'Proyecto 4'],
         ];
+
+        return view('portafolio', compact('portafolio'));
     }
 
     /**

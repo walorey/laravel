@@ -2,6 +2,15 @@
 <html>
 <head>
 	<title>@yield('title', 'titulo por defecto')</title>
+	<style>
+
+		.active a {
+
+			color: red;
+		}
+
+	</style>
+
 </head>
 <body>
 
