@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageReceived;
+use Illuminate\Support\Facades\Mail;
 
 class MessagesController extends Controller
 {
     public function store()
     {
-    	request()->validate([
+    	$message = request()->validate([
 
     		'name' => 'required',
     		'email' => 'required|email',
@@ -27,6 +29,15 @@ class MessagesController extends Controller
 
 
     ]);
+
+    	//Despues de validar los datos enviamos el mail:
+    	//Dentro de send() va lo que va a contener el email; igual usamos queue en vez de send
+    	Mail::to('facundo.avendano77@gmail.com')->queue(new MessageReceived($message));
+
+    	//este es el driver que usamos para enviar mails, smtp para produccion, log para local, en el archivo .env
+		//MAIL_DRIVER=smtp
+
+		// return new MessageReceived($message); muestra el contenido del formulario
 
     	return 'Datos validados';
     }
