@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+
+use App\Project;
+
 use Illuminate\Http\Request;
 
 class PortafolioController extends Controller
@@ -13,14 +17,27 @@ class PortafolioController extends Controller
      */
     public function index()
     {
-        $portafolio = [
-            ['title' => 'Proyecto 1'],
-            ['title' => 'Proyecto 2'],
-            ['title' => 'Proyecto 3'],
-            ['title' => 'Proyecto 4'],
-        ];
+        //esta es una forma de obtener datos de la base de datos
 
-        return view('portafolio', compact('portafolio'));
+        // $portafolio = DB::table('projects')->get();
+
+        //de esta forma se hace con el orm de laravel, se crea el modelo 'project' y lo ordenamos
+
+        // $portafolio = Project::orderBy('created_at', 'DESC')->get();
+
+        //esta forma lo hace descendente simplemente hay que decirle la columna, por defecto lo hace en created_at
+
+        // $portafolio = Project::latest('updated_at')->get();
+
+        // // para paginar:
+        // $projects = Project::latest('updated_at')->paginate();
+
+
+        return view('portafolio', [
+
+            'projects' => Project::latest()->paginate()
+
+        ]);
     }
 
     /**

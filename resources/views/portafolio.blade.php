@@ -9,11 +9,17 @@
 
 	<ul>
 
-		@forelse($portafolio as $portafolioItem)
-			<li>{{ $portafolioItem['title'] }}</li>
+		@forelse($projects as $project)
+			<li>{{ $project->title }} <br>
+				{{-- {{ $portafolioItem->description}} <br>
+				LE PODEMOS DAR FORMATO A LAS FECHAS CON ->format()
+				{{ $portafolioItem->updated_at->diffForHumans()}} --}}
+			</li>
 		@empty
 			<li>No hay nada por aqui</li>
 		@endforelse
+
+		{{ $projects->links()}}
 
 	</ul>
 
